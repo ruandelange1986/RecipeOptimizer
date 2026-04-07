@@ -1,0 +1,55 @@
+{
+  "hash": "ed9974bb",
+  "configHash": "961c34fc",
+  "lockfileHash": "989bb5ab",
+  "browserHash": "98d6ddfa",
+  "optimized": {
+    "@angular/core": {
+      "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "af999174",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "30eb9811",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "185d8bf2",
+      "needsInterop": false
+    },
+    "@angular/platform-browser/animations/async": {
+      "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/animations-async.mjs",
+      "file": "@angular_platform-browser_animations_async.js",
+      "fileHash": "d81e59d3",
+      "needsInterop": false
+    },
+    "zone.js": {
+      "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
+      "file": "zone__js.js",
+      "fileHash": "00f37d28",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-YWYTRS2X": {
+      "file": "chunk-YWYTRS2X.js"
+    },
+    "chunk-LG2OMOII": {
+      "file": "chunk-LG2OMOII.js"
+    },
+    "browser-KPLYDG76": {
+      "file": "browser-KPLYDG76.js"
+    },
+    "chunk-Z536I6SU": {
+      "file": "chunk-Z536I6SU.js"
+    },
+    "chunk-WDMUDEB6": {
+      "file": "chunk-WDMUDEB6.js"
+    }
+  }
+}

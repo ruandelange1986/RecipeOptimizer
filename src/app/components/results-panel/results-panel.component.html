@@ -1,0 +1,61 @@
+<div class="results-wrapper">
+  <!-- Performance badge -->
+  @if (solveMs() > 0) {
+    <div class="perf-badge">
+      <span class="perf-icon">⚡</span>
+      <span>Solved in <strong>{{ solveMs() }}ms</strong></span>
+    </div>
+  }
+
+  <div class="hero-stat">
+    <div class="hero-number">{{ fmt(result().totalPeopleFed) }}</div>
+    <div class="hero-label">people fed</div>
+  </div>
+
+  @if (result().breakdownByRecipe.length > 0) {
+    <div class="section">
+      <h3 class="section-title">Optimal Recipe Mix</h3>
+      <div class="breakdown-list">
+        @for (item of result().breakdownByRecipe; track item.recipe.id) {
+          <div class="breakdown-row" [style.--recipe-color]="item.recipe.color">
+            <div class="breakdown-left">
+              <span class="breakdown-emoji">{{ item.recipe.emoji }}</span>
+              <span class="breakdown-name">{{ item.recipe.name }}</span>
+            </div>
+            <div class="breakdown-right">
+              <span class="breakdown-count">×{{ fmt(item.count) }}</span>
+              <span class="breakdown-feeds">→ {{ fmt(item.peopleFed) }} {{ item.peopleFed === 1 ? 'person' : 'people' }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="empty-state">
+      <span class="empty-icon">🚫</span>
+      <p>No complete recipes can be made with current ingredients.</p>
+    </div>
+  }
+
+  <!-- Ingredients -->
+  <div class="section">
+    <h3 class="section-title">Ingredient Usage</h3>
+    <div class="ingredient-usage-list">
+      @for (item of ingredientSummary; track item.label) {
+        <div class="usage-row">
+          <div class="usage-header">
+            <span class="usage-label">{{ item.emoji }} {{ item.label }}</span>
+            <span class="usage-nums">
+              <span class="used-num">{{ fmt(item.used) }} used</span>
+              <span class="sep">/</span>
+              <span class="rem-num">{{ fmt(item.remaining) }} left</span>
+            </span>
+          </div>
+          <div class="usage-bar-track">
+            <div class="usage-bar-fill" [style.width.%]="usedPercent(item.used, item.total)"></div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

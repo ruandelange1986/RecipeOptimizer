@@ -1,0 +1,35 @@
+<div class="card" [class.active]="optimizedCount() > 0" [style.--recipe-color]="recipe().color">
+  <div class="card-header">
+    <span class="recipe-emoji">{{ recipe().emoji }}</span>
+    <div class="recipe-meta">
+      <span class="recipe-name">{{ recipe().name }}</span>
+      <span class="recipe-feeds">Feeds {{ recipe().feedsCount }}</span>
+    </div>
+    @if (optimizedCount() > 0) {
+      <div class="optimized-badge">
+        <span class="badge-count">×{{ optimizedCount() }}</span>
+        <span class="badge-label">optimal</span>
+      </div>
+    }
+  </div>
+
+  <div class="requirements">
+    @for (req of requirementEntries; track req.key) {
+      <span class="req-chip">
+        <span>{{ req.emoji }}</span>
+        <span>{{ req.needed }}× {{ req.label }}</span>
+      </span>
+    }
+  </div>
+
+  <div class="card-footer">
+    <div class="capacity-bar">
+      <div class="capacity-fill" [style.width.%]="usagePercent"></div>
+    </div>
+    <div class="capacity-labels">
+      @if (optimizedCount() > 0) {
+        <span class="cap-label feeds-label">→ Feeds <strong>{{ optimizedCount() * recipe().feedsCount }}</strong></span>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #F2EBE0;
+  --surface: #FDFAF6;
+  --surface-raised: #F5EFE5;
+  --border: #DDD4C4;
+  --border-strong: #C4B8A8;
+  --accent: #3A6B4A;
+  --accent-light: #4D8A61;
+  --accent-bg: #EBF3EE;
+  --text-primary: #1C1410;
+  --text-secondary: #5C5048;
+  --text-muted: #9C8E80;
+  --shadow-sm: 0 1px 3px rgba(60,40,20,0.08), 0 1px 2px rgba(60,40,20,0.04);
+  --shadow-md: 0 4px 12px rgba(60,40,20,0.10), 0 2px 4px rgba(60,40,20,0.06);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+app-root {
+  display: block;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+::selection {
+  background: rgba(58, 107, 74, 0.18);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

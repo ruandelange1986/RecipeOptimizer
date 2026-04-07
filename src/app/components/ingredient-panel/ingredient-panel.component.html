@@ -1,0 +1,33 @@
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-icon">🛒</span>
+    <div>
+      <h2 class="panel-title">Available Ingredients</h2>
+      <p class="panel-subtitle">Set your stock quantities</p>
+    </div>
+  </div>
+
+  <div class="ingredient-list">
+    @for (ingredient of ingredients(); track ingredient.key) {
+      <div class="ingredient-row">
+        <div class="ingredient-info">
+          <span class="ingredient-emoji">{{ ingredient.emoji }}</span>
+          <span class="ingredient-label">{{ ingredient.label }}</span>
+        </div>
+        <div class="ingredient-controls">
+          <button class="ctrl-btn" (click)="decrement(ingredient.key)" [disabled]="amounts()[ingredient.key] === 0">−</button>
+          <input
+            class="amount-input"
+            type="number"
+            min="0"
+            max="999999"
+            [value]="amounts()[ingredient.key]"
+            (input)="onAmountChange(ingredient.key, $any($event.target).value)"
+            (change)="onAmountChange(ingredient.key, $any($event.target).value)"
+          />
+          <button class="ctrl-btn" (click)="increment(ingredient.key)">+</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

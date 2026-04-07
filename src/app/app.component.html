@@ -1,0 +1,79 @@
+<div class="app-shell">
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-icon">🍽️</span>
+        <div class="brand-text">
+          <h1 class="brand-name">Recipe Optimizer</h1>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="presets">
+          <span class="presets-label">Quick set:</span>
+          @for (preset of presets; track preset.label) {
+            <button class="btn btn-preset" (click)="applyPreset(preset)">{{ preset.label }}</button>
+          }
+        </div>
+        <div class="divider"></div>
+        <button class="btn btn-ghost" (click)="clearAll()">Clear</button>
+        <button class="btn btn-outline" (click)="resetDefaults()">Reset</button>
+        <button class="btn btn-primary" (click)="runOptimization()" [disabled]="isOptimizing()">
+          @if (isOptimizing()) {
+            <span class="spinner"></span> Solving…
+          } @else {
+            ⚡ Optimize
+          }
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="layout">
+
+      <aside class="sidebar">
+        <app-ingredient-panel
+          [ingredients]="ingredients"
+          [amounts]="amounts()"
+          (amountChange)="onAmountChange($event)"
+        />
+      </aside>
+
+      <section class="recipe-grid-section">
+        <div class="section-header">
+          <h2 class="section-heading">Recipes</h2>
+          <span class="section-note">{{ recipes.length }} available</span>
+        </div>
+        <div class="recipe-grid">
+          @for (recipe of recipes; track recipe.id) {
+            <app-recipe-card
+              [recipe]="recipe"
+              [available]="amounts()"
+              [optimizedCount]="optimizedCounts()[recipe.id]"
+            />
+          }
+        </div>
+      </section>
+
+      <aside class="results-sidebar">
+        <div class="results-header">
+          <h2 class="section-heading">Results</h2>
+          @if (isOptimizing()) {
+            <span class="computing-badge">computing…</span>
+          }
+        </div>
+        @if (result(); as res) {
+          <app-results-panel [result]="res" [solveMs]="solveMs()" />
+        } @else {
+          <div class="no-result">
+            <span class="no-result-icon">⚡</span>
+            <p>Hit Optimize to find<br>the best combination</p>
+          </div>
+        }
+      </aside>
+
+    </div>
+  </main>
+
+</div>

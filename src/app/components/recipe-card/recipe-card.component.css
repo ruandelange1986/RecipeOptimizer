@@ -1,0 +1,128 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--recipe-color, var(--accent));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card.active {
+  border-color: color-mix(in srgb, var(--recipe-color, var(--accent)) 40%, var(--border));
+  box-shadow: 0 4px 16px rgba(60,40,20,0.08);
+}
+
+.card.active::before { opacity: 1; }
+
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.recipe-emoji { font-size: 26px; line-height: 1; }
+
+.recipe-meta { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+
+.recipe-name {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.recipe-feeds {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.optimized-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  padding: 5px 10px;
+  color: #fff;
+}
+
+.badge-count {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.badge-label {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+  margin-top: 1px;
+}
+
+.requirements {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.req-chip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 2px 7px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.card-footer { display: flex; flex-direction: column; gap: 5px; }
+
+.capacity-bar {
+  height: 3px;
+  background: var(--surface-raised);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.capacity-fill {
+  height: 100%;
+  border-radius: 2px;
+  opacity: 0.75;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.capacity-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cap-label { font-size: 11px; font-weight: 500; color: var(--text-muted); }
+.cap-label strong { color: var(--text-secondary); font-weight: 700; }
+.feeds-label strong { font-weight: 700; }
